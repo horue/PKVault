@@ -32,6 +32,20 @@ The system connects directly to your game saves (via compatible homebrew clients
 
 ---
 
+## • Third-Party Libraries & Licensing
+
+- PKVault makes use of **[PKHeX.Core](https://github.com/kwsch/PKHeX)** in certain parts of the project for parsing and managing save files.  
+
+  - **[PKHeX.Core](https://github.com/kwsch/PKHeX)** is licensed under the **[GNU General Public License (GPL)](https://www.gnu.org/licenses/gpl-3.0.en.html)**.  
+  - Any distribution of PKVault that includes or modifies PKHeX.Core must comply with the GPL, which requires:
+    I. Retaining all copyright notices and license information from PKHeX.Core.  
+    II. Making the source code of any derivative work available under the same GPL license.  
+    III. Ensuring that users receive the same freedoms to use, modify, and distribute the code.
+
+**Note:** If PKVault is used privately or for personal experimentation, compliance with the GPL applies only when distributing or sharing the software.
+
+---
+
 ## • Legal Disclaimer
 
 PKVault is a **fan-made, non-commercial** software project created solely for **educational and research purposes**.  
