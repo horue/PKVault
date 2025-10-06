@@ -1,0 +1,8 @@
+# Ignore virtual environment Python
+.venv/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore .vscode
+.vscode/
