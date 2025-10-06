@@ -6,4 +6,11 @@ export class GeneralController{
         }
         res.json(data);
     };
+    static async information (req, res){
+        const data = {
+            message: "PKVault is a fan-made, non-commercial software project created solely for educational and research purposes. It is not affiliated with, endorsed by, or supported by Nintendo, Game Freak, or The Pokémon Company. All names, sprites, designs, and trademarks related to Pokémon remain the intellectual property of their respective owners. This project does not include, distribute, or reproduce any copyrighted game assets."
+        };
+        res.json(data);
+
+    }
 }
