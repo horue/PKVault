@@ -59,7 +59,11 @@ public class Converter
     {
         return gen switch
         {
+            1 => "pk1",
+            2 => "pk2",
             3 => "pk3",
+            4 => "pk4",
+            5 => "pk5",
             6 => "pk6",
             7 => "pk7",
             8 => "pk8",
