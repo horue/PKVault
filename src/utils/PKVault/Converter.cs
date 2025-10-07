@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Text.Json;
 using PKHeX.Core;
 
 public class Converter
@@ -16,20 +15,22 @@ public class Converter
             Directory.CreateDirectory(tempDir);
             Console.WriteLine($"Temp folder created at: {tempDir}");
 
+            // Obtém a geração do save para definir extensão
+            int gen = save.Generation;
+            Console.WriteLine(save.Generation);
+
             int count = 0;
             foreach (var pkm in save.BoxData)
             {
                 if (pkm.Species == 0)
                     continue;
 
-                var dto = new PKMDto(pkm);
+                string extension = GetExtensionForGeneration(gen);
+                string fileName = Path.Combine(tempDir, $"{pkm.PID}.{extension}");
 
-                string fileName = Path.Combine(tempDir, $"{pkm.PID}.json");
+                byte[] pkmBytes = pkm.Data.ToArray();  // converte Span<byte> para byte[]
+                File.WriteAllBytes(fileName, pkmBytes);
 
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                string json = JsonSerializer.Serialize(dto, options);
-
-                File.WriteAllText(fileName, json);
                 count++;
             }
             Console.WriteLine($"{count} pkmn saved to temp folder.");
@@ -52,5 +53,18 @@ public class Converter
             Console.WriteLine("Error at opening save.");
         }
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+    }
+
+    private static string GetExtensionForGeneration(int gen)
+    {
+        return gen switch
+        {
+            3 => "pk3",
+            6 => "pk6",
+            7 => "pk7",
+            8 => "pk8",
+            9 => "pk9",
+            _ => "pkm"
+        };
     }
 }
