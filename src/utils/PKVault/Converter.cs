@@ -4,7 +4,7 @@ using PKHeX.Core;
 
 public class Converter
 {
-    public static void Convert(string saveFilePath)
+    public static string Convert(string saveFilePath)
     {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
         if (SaveUtil.TryGetSaveFile(saveFilePath, out SaveFile save) && save != null)
@@ -34,10 +34,10 @@ public class Converter
                 count++;
             }
             Console.WriteLine($"{count} pkmn saved to temp folder.");
-
             Console.WriteLine("Press any key to end the program. It will also delete the temp folder.");
-            Console.ReadKey();
+            return tempDir;
 
+            
             try
             {
                 Directory.Delete(tempDir, true);
@@ -50,7 +50,9 @@ public class Converter
         }
         else
         {
-            Console.WriteLine("Error at opening save.");
+            string info = "Error at opening save.";
+            Console.WriteLine(info);
+            return info;
         }
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
     }
