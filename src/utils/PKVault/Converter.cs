@@ -7,14 +7,14 @@ public class Converter
 {
     public static void Convert(string saveFilePath)
     {
-        #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
         if (SaveUtil.TryGetSaveFile(saveFilePath, out SaveFile save) && save != null)
         {
             Console.WriteLine("Save was opened.");
 
             string tempDir = Path.Combine(Path.GetTempPath(), "PKVTemp_" + Guid.NewGuid());
             Directory.CreateDirectory(tempDir);
-            Console.WriteLine($"Pasta temporária criada: {tempDir}");
+            Console.WriteLine($"Temp folder created at: {tempDir}");
 
             int count = 0;
             foreach (var pkm in save.BoxData)
