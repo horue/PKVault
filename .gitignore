@@ -6,3 +6,8 @@ node_modules/
 
 # Ignore .vscode
 .vscode/
+
+# Ignore C# debug builds
+src/utils/PKVault/bin/
+src/utils/PKVault/obj/
+
