@@ -17,7 +17,7 @@ public class Converter
 
             // Obtém a geração do save para definir extensão
             int gen = save.Generation;
-            Console.WriteLine(save.Generation);
+            Console.WriteLine("Game generation found: " + save.Generation);
 
             int count = 0;
             foreach (var pkm in save.BoxData)
@@ -34,7 +34,6 @@ public class Converter
                 count++;
             }
             Console.WriteLine($"{count} pkmn saved to temp folder.");
-            Console.WriteLine("Press any key to end the program. It will also delete the temp folder.");
             return tempDir;
 
             
