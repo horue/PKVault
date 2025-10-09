@@ -79,7 +79,5 @@ class PKReader
         // Serializa a lista e escreve no JSON
         var json = JsonSerializer.Serialize(indexList, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(Path.Combine(tempFolder, "index.json"), json);
-
-        Console.WriteLine("index.json criado com sucesso!");
     }
 }
