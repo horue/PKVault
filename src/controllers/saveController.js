@@ -2,6 +2,9 @@ import { exec } from 'child_process';
 import chalk from 'chalk';
 
 
+
+export const tempPath = "";
+
 export class SaveController {
     static async addSave(req, res) {
         try {
@@ -18,7 +21,13 @@ export class SaveController {
                 }
                 console.log(chalk.magentaBright('--- Start of C# console ---'))
                 console.log(chalk.green(`${stdout}`));
+                const match = stdout.match(/Temp folder created at:\s*(.+)/i);
                 console.log(chalk.magentaBright('--- End of C# console ---'))
+                if (match) {
+                    const tempPath = match[1].trim();
+                    console.log("Temp folder path:", tempPath);
+                }
+                global.currentTempPath = tempPath;
             });
             if (!recivedSave) {
                 return res.status(400).send({ message: "No file recived." });
