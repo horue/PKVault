@@ -3,7 +3,7 @@ import chalk from 'chalk';
 
 
 
-export const tempPath = "";
+export var tempPath = "";
 
 export class SaveController {
     static async addSave(req, res) {
@@ -24,7 +24,7 @@ export class SaveController {
                 const match = stdout.match(/Temp folder created at:\s*(.+)/i);
                 console.log(chalk.magentaBright('--- End of C# console ---'))
                 if (match) {
-                    const tempPath = match[1].trim();
+                    tempPath = match[1].trim();
                     console.log("Temp folder path:", tempPath);
                 }
                 global.currentTempPath = tempPath;
